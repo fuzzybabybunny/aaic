@@ -1,13 +1,21 @@
 Template.contact.rendered = function(){
 
-	dp('#submitButton').click(function(){
-		console.log("clicked");
-		dp('button').addClass( "turn-green" );
-		dp("#submitButton").text(dp("#submitButton").text().replace("Send Message", "Sent"));
-		var emailContents = {};
-		emailContents.email = dp('input[name="email"]').val();
-		emailContents.subject = dp('input[name="subject"]').val();
-		emailContents.message = dp('textarea[name="message"]').val();
-		Meteor.call('emailContactForm', emailContents);
-	});
 };
+
+Template.contact.events({
+
+	'click #submitButton': function(){
+
+		console.log("clicked");
+		$('button').addClass( "turn-green" );
+		$("#submitButton").text($("#submitButton").text().replace("Send Message", "Sent"));
+		var emailContents = {};
+		emailContents.email = $('input[name="email"]').val();
+		emailContents.subject = $('input[name="subject"]').val();
+		emailContents.message = $('textarea[name="message"]').val();
+		Meteor.call('emailContactForm', emailContents);
+
+	}
+
+
+});
